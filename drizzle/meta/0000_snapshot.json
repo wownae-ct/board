@@ -1,0 +1,121 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "prevId": "",
+  "version": "5",
+  "dialect": "mysql",
+  "tables": {
+    "board": {
+      "name": "board",
+      "columns": {
+        "ID": {
+          "autoincrement": true,
+          "name": "ID",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "TITLE": {
+          "autoincrement": false,
+          "name": "TITLE",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CONTENTS": {
+          "autoincrement": false,
+          "name": "CONTENTS",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "USERNAME": {
+          "autoincrement": false,
+          "name": "USERNAME",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PASSWORD": {
+          "autoincrement": false,
+          "name": "PASSWORD",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "VIEWS": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "VIEWS",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "CREATED_DT": {
+          "default": "(CURRENT_TIMESTAMP)",
+          "autoincrement": false,
+          "name": "CREATED_DT",
+          "type": "datetime",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "UPDATED_DT": {
+          "default": "(CURRENT_TIMESTAMP)",
+          "autoincrement": false,
+          "name": "UPDATED_DT",
+          "type": "datetime",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "DELETED_YN": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "DELETED_YN",
+          "type": "tinyint(1)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "board_ID": {
+          "name": "board_ID",
+          "columns": [
+            "ID"
+          ]
+        }
+      },
+      "indexes": {
+        "IDX_BOARD": {
+          "name": "IDX_BOARD",
+          "columns": [
+            "CREATED_DT"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    }
+  },
+  "views": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "tables": {
+      "board": {
+        "columns": {
+          "CREATED_DT": {
+            "isDefaultAnExpression": true
+          },
+          "UPDATED_DT": {
+            "isDefaultAnExpression": true
+          }
+        }
+      }
+    },
+    "indexes": {}
+  }
+}

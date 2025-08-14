@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>게시판</title>
+  <link rel="stylesheet" href="/assets/css/style.css"></link>
+</head>
+<body>
+<div class="globalBox">
+  <h1 id="boardWrite">게시글 작성</h1>
+  <div id="titleBox">
+    <span>제목</span>
+    <input type="text" placeholder="제목을 입력하세요"></input>
+  </div>
+  <div id="writerBox">
+    <div id="writerBoxLeft">
+      <span>작성자</span>
+      <input type="text"></input>
+    </div>
+    <div id="writerBoxRight">
+      <span>비밀번호</span>
+      <input type="password"></input>
+    </div>
+  </div>
+  <span id="contentTitle">내용</span>
+  <textarea id="content" placeholder="내용을 입력해 주세요." required></textarea>
+<!--  <div id="content" contenteditable="true"></div>-->
+  <form id="buttonBox">
+    <input type="submit" value="등록"></input>
+  </form>
+</div>
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

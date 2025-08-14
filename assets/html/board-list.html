@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./assets/css/board-list.css"></link>
+    <title>게시판</title>
+</head>
+<body>
+    <div class="globalBox">
+        <h1 id="boardWrite">게시글 목록</h1>
+        <form class="searchBox">
+            <input type="text" id="searchInput"></input>
+            <button id="searchButton">검색</button>
+        </form>
+        <table class="hidden" id="boardList" border="1" style="border-color: bisque;">
+          <thead id=boardListTitle class="hidden">
+          <tr>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>조회수</th>
+          </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="pagingBox">
+<!--          <div></div>-->
+<!--            <a class=pageOption href="#">&laquo 처음</a>-->
+<!--            <a class=pageOption href="#">&lt; 이전</a>-->
+<!--            <a id=pageNumber href="#">1</a>-->
+<!--            <a class=pageOption href="#">다음 &gt;</a>-->
+<!--            <a class=pageOption href="#">맨끝 &raquo;</a>-->
+        </div>
+
+    </div>
+    <script src="./assets/js/board-list.js"></script>
+</body>
+</html>
