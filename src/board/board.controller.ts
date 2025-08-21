@@ -5,6 +5,7 @@ import {
   Get,
   Logger,
   Param,
+  ParseBoolPipe,
   ParseIntPipe,
   Patch,
   Post,
@@ -14,7 +15,7 @@ import { BoardService } from './board.service';
 import { CreateBoardDto, CreateBoardResponseDto } from './dto/create-board.dto';
 import { UpdateBoardDto } from './dto/update-board.dto';
 import { readFileString } from '../utils/file-util.utils';
-import { isNumber } from 'class-validator';
+import { isNumber, IsString } from 'class-validator';
 import { ReadBoardDto } from './dto/read-board.dto';
 import { PaginationDto } from './dto/pagination.dto';
 
@@ -22,6 +23,11 @@ import { PaginationDto } from './dto/pagination.dto';
 export class BoardController {
   private readonly logger: Logger = new Logger(BoardController.name);
   constructor(private readonly boardService: BoardService) {}
+
+  @Get('search')
+  async search(@Query('searchWord' ) searchWord: string) {
+    return await this.boardService.search(searchWord);
+  }
 
   @Post()
   async create(@Body() createBoardDto: CreateBoardDto): Promise<CreateBoardResponseDto> {
@@ -35,19 +41,19 @@ export class BoardController {
   }
 
   @Get('list')
-  async findAll(@Query('page', ParseIntPipe) page: number): Promise<PaginationDto> {
+  async findAll(@Query('page', ParseIntPipe) page: number, @Query('toggle', ParseBoolPipe) toggle?: boolean, @Query('searchWord' ) searchWord?: string): Promise<PaginationDto> {
     const pagination: PaginationDto = new PaginationDto();
     pagination.currentPage = page;
-    pagination.totalCount = await this.boardService.findTotalDataCount();
-    pagination.dataList = await this.boardService.findAll(page);
+    pagination.totalCount = await this.boardService.findTotalDataCount(searchWord);
+    pagination.dataList = await this.boardService.findAll(page, toggle, searchWord);
     pagination.totalPageCnt = Math.ceil(pagination.totalCount / pagination.dataCntPerPg);
     pagination.totalPgUnitCount = Math.ceil(pagination.totalPageCnt / 5);
     return pagination;
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: number): Promise<ReadBoardDto> {
-    const result = await this.boardService.findOne(id);
+  async findOne(@Param('id') id: number, @Query('password') password?: string): Promise<ReadBoardDto> {
+    const result = await this.boardService.findOne(id, password);
     if (result) {
       return result;
     } else {
@@ -62,6 +68,7 @@ export class BoardController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
+    console.log("드루옴");
     return this.boardService.remove(+id);
   }
 
@@ -73,6 +80,7 @@ export class BoardController {
       return readFileString('./assets/html/404.html');
     }
     return resultPage;
+
   }
 
   @Get('post-list')

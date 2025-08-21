@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./assets/css/board-list.css"></link>
+    <link rel="stylesheet" href="../assets/css/board-list.css"></link>
     <title>게시판</title>
 </head>
 <body>
@@ -14,11 +14,11 @@
         </form>
         <table class="hidden" id="boardList" border="1" style="border-color: bisque;">
           <thead id=boardListTitle class="hidden">
-          <tr>
-            <th>제목</th>
+          <tr class=toggle">
+            <th>제목 <img class="arrow" src="../assets/images/arrow.png" onclick="toggle(false)"></th>
             <th>작성자</th>
-            <th>작성일</th>
-            <th>조회수</th>
+            <th>작성일 <img class="arrow" src="../assets/images/arrow.png" onclick="toggle(false)"></th>
+            <th>조회수 <img class="arrow" src="../assets/images/arrow.png" onclick="toggle(false)"></th>
           </tr>
           </thead>
           <tbody></tbody>
@@ -31,8 +31,8 @@
 <!--            <a class=pageOption href="#">다음 &gt;</a>-->
 <!--            <a class=pageOption href="#">맨끝 &raquo;</a>-->
         </div>
-
+        <button id="postButton" onclick="newPost()">글쓰기</button>
     </div>
-    <script src="./assets/js/board-list.js"></script>
+    <script src="../assets/js/board-list.js"></script>
 </body>
 </html>

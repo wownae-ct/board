@@ -1,7 +1,17 @@
 * {
   box-sizing: border-box;
   margin: 0px;
+} ::placeholder {
+      font-size: 25px;
+    color: gray;
+  }
+
+
+#hidden {
+    display: none;
 }
+
+
 
 html,
 body {
@@ -87,7 +97,7 @@ body {
   padding: 10px;
 }
 
-#writerBoxLeft {
+.writerBoxLeft {
   margin: 0px;
   width: 50%;
   height: 100%;
@@ -95,12 +105,39 @@ body {
   justify-content: start;
   align-items: center;
   text-align: center;
+
 }
+.writerBoxLeft input {
+    width: 55%;
+    height: 100%;
+    border: 3px solid black;
+    font-size: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 25px;
+    margin-top: 2px;
+    margin-left: 20px;
+}
+
+#writerBoxLeft {
+    margin: 0px;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+
+}
+
 
 #writerBoxLeft input {
   width: 55%;
   height: 100%;
-  border: 3px solid black;
+  border: 4px dashed gray;
   font-size: 32px;
   display: flex;
   flex-direction: row;
@@ -137,12 +174,43 @@ body {
   margin-left: 20px;
 }
 
+.writerBoxRight {
+    margin: 0px;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    text-align: center;
+}
+
+.writerBoxRight input {
+    width: 55%;
+    height: 100%;
+    border: 3px solid black;
+    font-size: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 25px;
+    margin-top: 2px;
+    margin-left: 20px;
+    border: 4px dashed gray;
+}
+
+#red::placeholder {
+    color: red;
+}
+
 #contentTitle {
   width: 100%;
   padding: 10px;
 }
 
 #content {
+    padding: 25px;
   margin-left: 10px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -174,6 +242,16 @@ body {
   background-color: gray; /* 스크롤 바의 색상 */
 }
 
+/*#buttonBox {*/
+/*    width: 100%;*/
+/*    height: 70px;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: flex-end;*/
+/*    margin-left: auto;*/
+/*    align-items: center;*/
+/*}*/
+
 #buttonBox {
   /* top: 3px;
     width: 100%;
@@ -183,8 +261,9 @@ body {
   width: 100%;
   height: 70px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: end;
+    margin-left: auto;
   align-items: center;
   /* display: flex;
     flex-direction: row;
@@ -204,10 +283,11 @@ body {
   /* position: absolute;
     right: 0;
     padding: 0; */
-  margin-left: auto;
-  margin-right: 10px;
+  /*margin-left: auto;*/
+  margin-right: 15px;
   background-color: #348feb;
   color: white;
   border: none;
   cursor: pointer;
 }
+

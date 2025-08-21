@@ -7,17 +7,17 @@
 </head>
 <body>
 <div class="globalBox">
-  <h1 id="boardWrite">게시글 작성</h1>
+  <h2 id="boardWrite">${title}</h2>
   <div id="titleBox">
-    <span>제목</span>
-    <input type="text" readonly="readonly" placeholder="${title}"></input>
+    <span >제목</span>
+    <input type="text" placeholder="제목을 입력하세요"></input>
   </div>
   <div id="writerBox">
     <div id="writerBoxLeft">
       <span>작성자</span>
       <input type="text" readonly="readonly" placeholder="${writer}"></input>
     </div>
-    <div id="writerBoxRight">
+    <div class="writerBoxRight">
       <span>작성일</span>
       <input type="text" readonly="readonly" placeholder="${createDt}"></input>
     </div>
@@ -25,9 +25,13 @@
   <span id="contentTitle">내용</span>
   <textarea id="content" readonly="readonly" required>${content}</textarea>
 <!--  <div id="content" contenteditable="true"></div>-->
-  <form id="buttonBox">
-    <input type="submit" value="목록" readonly="readonly"></input>
+  <div id="buttonBox">
+  <form id="buttonForm">
+    <input type="submit" value="수정" readonly="readonly"></input>
+    <input type="submit" value="삭제" readonly="readonly"></input>
+    <input type="submit" value="목록이동" readonly="readonly"></input>
   </form>
+  </div>
 </div>
 <script src="/assets/js/board-detail.js"></script>
 </body>
