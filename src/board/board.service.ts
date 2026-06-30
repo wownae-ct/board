@@ -5,6 +5,7 @@ import { MysqlAccessService } from '../mysql-access/mysql-access.service';
 import { MySql2Database, MySqlRawQueryResult } from 'drizzle-orm/mysql2';
 import { sql } from 'drizzle-orm';
 import { board } from '../mysql-access/schemas/schema';
+import { hashPassword } from '../utils/password.utils';
 
 @Injectable()
 export class BoardService {
@@ -15,18 +16,16 @@ export class BoardService {
     this.database = this.dbAccessor.getDatabase();
   }
 
-  async create(boardData) {
+  async create(boardData: CreateBoardDto) {
+    // ⬇️ id는 DB의 autoincrement로 채워지므로 클라이언트 값을 신뢰하지 않는다.
+    //    비밀번호는 평문 대신 해시로 저장하고, 평문이 로그에 남지 않도록 한다.
     const result = await this.database.insert(board).values({
-      id: boardData.id,
       title: boardData.title,
       contents: boardData.content,
       username: boardData.writer,
-      password: boardData.passwd,
+      password: hashPassword(boardData.passwd),
     });
-    this.logger.log(boardData);
     this.logger.log(result);
-
-    // return 'This action adds a new board';
   }
 
   /*const result: MySqlRawQueryResult
@@ -50,7 +49,6 @@ return result[0] as any as CreateBoardDto[];*/
         views : board.views,
       }).from(board).limit(10).offset(page);
 
-      console.log(result);
       return result;
   }
 
