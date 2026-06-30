@@ -11,3 +11,11 @@ export const readFileBytes = (path: string): Buffer<ArrayBuffer> => {
 export const exists = (path: string): boolean => {
     return fs.existsSync(path);
 }
+
+export const isFile = (path: string): boolean => {
+    try {
+        return fs.statSync(path).isFile();
+    } catch {
+        return false;
+    }
+}
